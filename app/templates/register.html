@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PrevWORKS - Register</title>
+    <link rel="stylesheet" href="{{url_for('static', path='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{url_for('static', path='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='assets/fonts/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='assets/fonts/fontawesome5-overrides.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', path='assets/css/humanbody.css')}}">
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-7 m-auto">
+                        <div class="p-5"><img class="img-fluid" src="{{url_for('static', path='assets/img/PrevWORKS with logo (1).png')}}">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Create an Account!</h4>
+                            </div>
+                            <form class="user" onsubmit="return registerEmployer()" id="registration_form" action="" method="post">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="first_name" placeholder="First Name" name="first_name" required=""></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="last_name" placeholder="Last Name" name="last_name" required=""></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="country" placeholder="Country" name="country" required=""></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="phone" placeholder="Phone" name="phone" required=""></div>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center" style="color: red" id="email_warning" hidden="">Email is already taken, please use a different one</p>
+                                    <input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Email Address" name="email" required="">
+                                </div>
+                                <p class="text-center" style="color: red" id="password_warning" hidden="">Passwords do not match, please try again</p>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password" required=""></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="repeat_password" placeholder="Repeat Password" name="password_repeat" required=""></div>
+                                </div>
+                                <hr>
+                                <input class="form-control form-control-user mb-3" type="text" id="street_1" placeholder="Street Address Line 1" name="street_1" required="">
+                                <input class="form-control form-control-user mb-3" type="text" id="street_2" placeholder="Street Address Line 2" name="street_2">
+                                <p class="text-center" style="color: red" id="state_warning" hidden="">Please enter your state in postal code form</p>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="city" placeholder="City" name="city" required=""></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="state" placeholder="State" name="state" required=""></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="country_mail" placeholder="Country - Mailing Address" name="country_mail" required=""></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="zipcode" placeholder="Zipcode" name="zipcode" required=""></div>
+                                </div>
+                                <button class="btn btn-primary btn-block text-white btn-user" type="submit">Register Account</button>
+                            </form>
+                            <hr>
+                            <div class="text-center"><a class="small" href="/login">Already have an account? Login!</a></div>
+                            <div class="text-center"><a class="small" href="/registerCompany">Create a Company!</a> or <a class="small" href="/loginCompany">Login as a Company!</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{url_for('static', path='assets/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', path='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', path='assets/js/chart.min.js')}}"></script>
+    <script src="{{url_for('static', path='assets/js/bs-init.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{{url_for('static', path='assets/js/humanbody.js')}}"></script>
+    <script src="{{url_for('static', path='assets/js/theme.js')}}"></script>
+    <script type="text/javascript">
+
+        // Function checks if the input email is unique by checking if already exists in the database
+        function checkEmail() {
+            // Getting the user input
+            let input_email = document.getElementById('email').value;
+
+            // Doing a GET request to check if the employer email is already taken!
+            let reqUrl = "http://localhost:5000/users/employer/" + input_email;
+            const reqxhttp = new XMLHttpRequest();
+            reqxhttp.open("GET", reqUrl, false);
+            reqxhttp.send();
+
+            return reqxhttp.status;
+        }
+
+        // Function to check that both entered passwords match
+        function checkPassword() {
+            let password = document.getElementById('password').value;
+            let repeat_password = document.getElementById('repeat_password').value;
+            if(password === repeat_password){
+                document.getElementById('password_warning').setAttribute('hidden', '');
+                return true;
+            }
+            // If passwords do not match then display warning.
+            else{
+                document.getElementById('password_warning').removeAttribute('hidden');
+                return false;
+            }
+        }
+
+        // Function that checks that states are entered in postal code form
+        function checkState() {
+            if(document.getElementById('state').value.length === 2){
+                document.getElementById('state_warning').setAttribute('hidden', '');
+                return true;
+            }
+            document.getElementById('state_warning').removeAttribute('hidden');
+            return false;
+        }
+
+        // Function to register the employer if all good then send to the backend.
+        function registerEmployer(){
+            let emailStatus = checkEmail();
+            // The email is unique and not already taken by a user.
+            if(emailStatus === 404){
+                document.getElementById('email_warning').setAttribute('hidden', '');
+                // Check that passwords match
+                if(checkPassword()){
+                    // Check that state is in postal code form.
+                    if(checkState()) {
+                        return true;
+                    }
+                }
+            }
+            else if(emailStatus === 200){
+                document.getElementById('email_warning').removeAttribute('hidden');
+                // Just do the check to remove the error messages.
+                checkPassword();
+                checkState();
+            }
+            // Possible 500 error
+            else {
+                // Just do the check to remove the error messages.
+                checkPassword();
+                checkState();
+                alert("We are experiencing some errors on our system, please come back later to complete the registration process");
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

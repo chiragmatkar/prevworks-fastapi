@@ -1,0 +1,119 @@
+.human-body {
+  /* width: 207px; */
+  position: relative;
+  /* padding-top: 240px;
+  height: 500px; */
+  display: block;
+  margin: 40px auto;
+  /* fill: #57c9d5; */
+
+}
+
+/* .human-body path {
+  fill: #57c9d5;
+} */
+
+.human-body-back {
+  /*width: 207px;*/
+  position: relative;
+  /*padding-top: 240px;*/
+  /*height: 500px;*/
+  display: block;
+  margin: 40px auto;
+  /*fill: #57c9d5;*/
+}
+
+/* .human-body path, human-body-back:hover {
+  cursor: pointer;
+} */
+
+.human-body path:hover  {
+  cursor: pointer;
+}
+
+.human-body-back path {
+}
+
+.neck:hover, .back:hover, .hips:hover {
+  cursor: pointer;
+}
+
+.human-body svg {
+  position: absolute;
+  left: 50%;
+  fill: #57c9d5;
+}
+
+.human-body svg.head {
+  margin-left: -28.5px;
+  top: -6px;
+}
+
+.human-body svg.shoulder {
+  margin-left: -53.5px;
+  top: 69px;
+}
+
+.human-body svg.arm {
+  margin-left: -78px;
+  top: 112px;
+}
+
+.human-body svg.chest {
+  margin-left: -43.5px;
+  top: 88px;
+}
+
+.human-body svg.stomach {
+  margin-left: -37.5px;
+  top: 130px;
+}
+
+.human-body svg.legs {
+  margin-left: -46.5px;
+  top: 205px;
+  z-index: 9999;
+}
+
+.human-body svg.hands {
+  margin-left: -102.5px;
+  top: 224px;
+}
+
+#area {
+  display: block;
+  width: 100%;
+  clear: both;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-family: Courier New;
+  color: #a5a5a5;
+}
+
+#area #data {
+  color: black;
+}
+
+.human-body svg.head-back {
+  margin-left: -28px;
+  top: -8px;
+}
+
+#clickedBodyPartTable {
+  display: none;
+}
+
+.keyBox {
+  width: 400px;
+  height: 42px;
+  border: 1px solid black;
+}
+
+.keyBlackBox {
+  width: 42px;
+  height: 42px;
+  border: 1px solid black;
+  background-color: black;
+  margin-left: 15px;
+}
